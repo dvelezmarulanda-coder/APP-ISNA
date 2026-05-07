@@ -1,23 +1,19 @@
 @import "tailwindcss";
 
-/* ===== Custom Theme ===== */
+/* ===== Custom Theme - Elegant Palette: Soft Gray, Navy Blue & Gold ===== */
 @theme {
   --font-sans: 'Inter', sans-serif;
-  --font-serif: 'Playfair Display', serif;
+  --font-serif: 'Cinzel', serif;
+  --font-decorative: 'Cinzel Decorative', cursive;
   
-  /* Brand Colors */
-  --color-brand-50: #faf9f6;
-  --color-brand-100: #f5f3ef;
-  --color-brand-200: #e8e4dc;
-  --color-brand-300: #d4cec2;
-  --color-brand-400: #a89f8e;
-  --color-brand-500: #7c7262;
-  --color-brand-600: #5a5245;
-  --color-brand-700: #3d372e;
-  --color-brand-800: #2a2520;
-  --color-brand-900: #1a1714;
-
-  --color-gold-400: #c9a96e;
+  /* Brand Colors - Elegant Blue & Gray */
+  --color-brand-bg: #e5e7eb;        /* Darker Soft Gray Background */
+  --color-brand-navy: #0f172a;      /* Elegant Dark Blue */
+  --color-brand-blue: #1e293b;      /* Navy Blue Mid */
+  --color-brand-gold: #b8943f;      /* Classic Gold */
+  --color-brand-gold-light: #e6d5b8; /* Soft/Tenue Gold */
+  
+  --color-gold-400: #d4af37;
   --color-gold-500: #b8943f;
   --color-gold-600: #9a7a2e;
 }
@@ -25,10 +21,16 @@
 /* ===== Base Styles ===== */
 body {
   font-family: var(--font-sans);
-  background-color: #c4c3bb;
-  color: #1a1a1a;
+  background-color: var(--color-brand-bg);
+  color: var(--color-brand-navy);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Selection colors */
+::selection {
+  background-color: var(--color-brand-gold);
+  color: white;
 }
 
 /* ===== Custom Scrollbar ===== */
@@ -39,42 +41,29 @@ body {
   background: transparent;
 }
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: #555;
+  background: var(--color-brand-blue);
   border-radius: 10px;
 }
 
 /* ===== Animations ===== */
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 @keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes scaleIn {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
 }
 
 @keyframes shimmer {
@@ -84,6 +73,10 @@ body {
 
 .animate-fade {
   animation: fadeIn 0.4s ease-out forwards;
+}
+
+.animate-fade-in {
+  animation: fadeInIn 0.5s ease-out forwards;
 }
 
 .animate-slide-up {
@@ -102,12 +95,19 @@ body {
 .stagger-5 { animation-delay: 0.25s; opacity: 0; }
 .stagger-6 { animation-delay: 0.3s; opacity: 0; }
 
-/* ===== Glassmorphism utility ===== */
-.glass {
-  background: rgba(255, 255, 255, 0.05);
+/* ===== Premium glassmorphism for light theme ===== */
+.glass-light {
+  background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(15, 23, 42, 0.05);
+}
+
+.glass-navy {
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 /* ===== Premium button hover ===== */
@@ -122,7 +122,7 @@ body {
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
   transition: left 0.5s ease;
 }
 .btn-premium:hover::after {
@@ -138,10 +138,11 @@ body {
   animation: float-slow 15s ease-in-out infinite;
 }
 
+.pattern-lines {
+  background-image: repeating-linear-gradient(45deg, rgba(184, 148, 63, 0.05) 0, rgba(184, 148, 63, 0.05) 1px, transparent 0, transparent 50%);
+  background-size: 20px 20px;
+}
+
 .text-glow-gold {
-  text-shadow: 
-    0 0 10px rgba(251, 191, 36, 0.9),
-    0 0 20px rgba(251, 191, 36, 0.7),
-    0 0 40px rgba(251, 191, 36, 0.5),
-    0 0 60px rgba(251, 191, 36, 0.3);
+  text-shadow: 0 0 15px rgba(184, 148, 63, 0.3);
 }

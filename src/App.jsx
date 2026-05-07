@@ -22,5 +22,5 @@ export default function App() {
     );
   }
 
-  return <ShopView products={store.products} onAdminClick={() => setView("login")} />;
+  return <ShopView store={store} onAdminClick={() => setView("login")} />;
 }
